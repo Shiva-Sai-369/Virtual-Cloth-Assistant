@@ -1,50 +1,56 @@
-# Cloths Virtual Try On
-[![Open in colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SwayamInSync/clothes-virtual-try-on/blob/main/setup_gradio.ipynb)
+﻿# Virtual Cloth Assistant 👕✨
 
-## Updates
-- **[19/02/2024] From now on this repo won't receive any future updates from my side (Spoiler: It's not gone for good 😉. Expect its return, stronger than ever.) (Community Contributions & Issues discussions are still welcome 🤗)**
-- [26/12/2023] Added the Gradio interface and removed all the external depenency
-- [19/12/2023] Fixed the `openpose` installation and missing model weights issue
-- [19/12/2023] Replaced the `remove.bg` dependecy with `rembg`
-- [26/04/2023] Fixed the GAN generation issue
+A web-based virtual clothing try-on application. This project provides an intuitive interface to upload a person's image and a garment image, and seamlessly generates a highly accurate visualization of the person wearing the garment.
 
-## Star History
-[![Star History Chart](https://api.star-history.com/svg?repos=SwayamInSync/clothes-virtual-try-on&type=Date)](https://star-history.com/#SwayamInSync/clothes-virtual-try-on&Date)
+## Features
+- **Web Interface:** Clean and responsive frontend to easily upload images and view results.
+- **Flask Backend:** A lightweight python server to handle image uploads and processing.
+- **Hugging Face IDM-VTON Integration:** Leverages the advanced IDM-VTON (Improving Diffusion Models for Virtual Try-on) model via the gradio_client API for highly accurate, realistic results.
+- **Secure Token Authentication:** Uses Hugging Face API tokens to manage quota limits reliably.
 
-## Table of contents
-- [Cloths Virtual Try On](#cloths-virtual-try-on)
-  - [Table of contents](#table-of-contents)
-  - [General info](#general-info)
-  - [Demo](#demo)
-  - [Block Diagram](#block-diagram)
-  - [Methodology](#methodology)
-  - [Usage](#usage)
-  - [Citation](#citation)
+## Prerequisites
+- Python 3.8+
+- A free Hugging Face Access Token (HF_TOKEN)
 
-## General info
+## Installation & Setup
 
-This project is a part of a crework community project. While buying clothes online, it is difficult for a customer to select a desirable outfit in the first attempt because they can’t try on clothes. This project aims to solve this problem.
+1. **Clone the repository:**
+   `ash
+   git clone https://github.com/Shiva-Sai-369/Virtual-Cloth-Assistant.git
+   cd Virtual-Cloth-Assistant
+   `
 
-<img width="383" alt="general_info" src="https://user-images.githubusercontent.com/63489382/163923011-c2898812-2491-4ec2-beb7-dcaaaf680e4f.png">
+2. **Create and activate a virtual environment:**
+   `ash
+   python -m venv .venv
+   # Windows:
+   .venv\Scripts\activate
+   # Mac/Linux:
+   source .venv/bin/activate
+   `
 
+3. **Install the dependencies:**
+   `ash
+   pip install flask gradio_client huggingface_hub pillow requests werkzeug
+   `
 
-## Demo
-
-https://user-images.githubusercontent.com/63489382/163922795-5dbb0f52-95e4-42c6-95d7-2d965abeba6d.mp4
-
-
-
-## Block Diagram
-![block_diagram_whole](https://user-images.githubusercontent.com/63489382/163922947-c1677f79-ad6f-4550-affc-7d4e80f0d247.png)
-
-
-## Methodology
-![block_diagram_detailed](https://user-images.githubusercontent.com/63489382/163922991-86d148c2-1a97-48a5-b4ec-d8c16819374a.png)
-
+4. **Set your Hugging Face Token:**
+   - Generate a free token from [Hugging Face Settings](https://huggingface.co/settings/tokens).
+   - Set it as an environment variable in your terminal:
+     - **Windows (PowerShell):** $env:HF_TOKEN="your_token_here"
+     - **Mac/Linux:** export HF_TOKEN="your_token_here"
 
 ## Usage
-- Just Click on `open in colab` button on top of this README file
 
+1. **Start the server:**
+   `ash
+   python client-side/app.py
+   `
+2. **Open your browser:**
+   Navigate to http://127.0.0.1:5000
 
-## Citation
-**Work in progress**
+3. **Try it out:**
+   Upload a person's image and a garment image, then click the Try-on button.
+
+## About
+This project was customized to use server-side API routing via Hugging Face Spaces instead of local heavy GPU rendering, making it fast and lightweight for any machine.
